@@ -62,6 +62,7 @@ func (d driver) ListObjects(a *wfv1.Artifact) ([]string, error) {
 	log.WithField("artifactName", a.Name).
 		WithField("key", key).
 		WithField("duration", time.Since(t)).
+		WithField("list", list).
 		WithError(err).
 		Info("List objects")
 	return list, err
@@ -74,6 +75,7 @@ func (d driver) IsDirectory(a *wfv1.Artifact) (bool, error) {
 	log.WithField("artifactName", a.Name).
 		WithField("key", key).
 		WithField("duration", time.Since(t)).
+		WithField("isDir", isDir).
 		WithError(err).
 		Info("Check if directory")
 	return isDir, err

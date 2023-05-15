@@ -212,6 +212,7 @@ It will marshall back to string - marshalling is not symmetric. |  |
 '{{workflow.outputs.artifacts.XXXX}} and in workflow.status.outputs.artifacts |  |
 | hdfs | [HDFSArtifact](#h-d-f-s-artifact)| `HDFSArtifact` |  | |  |  |
 | http | [HTTPArtifact](#http-artifact)| `HTTPArtifact` |  | |  |  |
+| ks3 | [Ks3Artifact](#ks3-artifact)| `Ks3Artifact` |  | |  |  |
 | mode | int32 (formatted integer)| `int32` |  | | mode bits to use on this file, must be a value between 0 and 0777
 set when loading input artifacts. |  |
 | name | string| `string` |  | | name of the artifact. must be unique within a template's inputs/outputs. |  |
@@ -279,6 +280,7 @@ of a single workflow step, which the executor will use as a default location to 
 | git | [GitArtifact](#git-artifact)| `GitArtifact` |  | |  |  |
 | hdfs | [HDFSArtifact](#h-d-f-s-artifact)| `HDFSArtifact` |  | |  |  |
 | http | [HTTPArtifact](#http-artifact)| `HTTPArtifact` |  | |  |  |
+| ks3 | [Ks3Artifact](#ks3-artifact)| `Ks3Artifact` |  | |  |  |
 | oss | [OSSArtifact](#o-s-s-artifact)| `OSSArtifact` |  | |  |  |
 | raw | [RawArtifact](#raw-artifact)| `RawArtifact` |  | |  |  |
 | s3 | [S3Artifact](#s3-artifact)| `S3Artifact` |  | |  |  |
@@ -313,6 +315,7 @@ of a single workflow step, which the executor will use as a default location to 
 '{{workflow.outputs.artifacts.XXXX}} and in workflow.status.outputs.artifacts |  |
 | hdfs | [HDFSArtifact](#h-d-f-s-artifact)| `HDFSArtifact` |  | |  |  |
 | http | [HTTPArtifact](#http-artifact)| `HTTPArtifact` |  | |  |  |
+| ks3 | [Ks3Artifact](#ks3-artifact)| `Ks3Artifact` |  | |  |  |
 | mode | int32 (formatted integer)| `int32` |  | | mode bits to use on this file, must be a value between 0 and 0777
 set when loading input artifacts. |  |
 | name | string| `string` |  | | name of the artifact. must be unique within a template's inputs/outputs. |  |
@@ -2130,6 +2133,29 @@ mode, like fsGroup, and the result can be other mode bits set.
 May not be an absolute path.
 May not contain the path element '..'.
 May not start with the string '..'. |  |
+
+
+
+### <span id="ks3-artifact"></span> Ks3Artifact
+
+
+> Ks3Artifact is the location of an ks3 artifact
+  
+
+
+
+
+
+**Properties**
+
+| Name | Type | Go type | Required | Default | Description | Example |
+|------|------|---------|:--------:| ------- |-------------|---------|
+| accessKeySecret | [SecretKeySelector](#secret-key-selector)| `SecretKeySelector` |  | |  |  |
+| bucket | string| `string` |  | | Bucket is the name of the bucket |  |
+| endpoint | string| `string` |  | | Endpoint is the hostname of the bucket endpoint |  |
+| key | string| `string` |  | | Key is the path in the bucket where the artifact resides |  |
+| region | string| `string` |  | | Region is the region of the bucket |  |
+| secretKeySecret | [SecretKeySelector](#secret-key-selector)| `SecretKeySelector` |  | |  |  |
 
 
 

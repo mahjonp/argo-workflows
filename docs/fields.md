@@ -2031,6 +2031,7 @@ Artifact indicates an artifact to place at a specified path
 |`globalName`|`string`|GlobalName exports an output artifact to the global scope, making it available as '{{io.argoproj.workflow.v1alpha1.outputs.artifacts.XXXX}} and in workflow.status.outputs.artifacts|
 |`hdfs`|[`HDFSArtifact`](#hdfsartifact)|HDFS contains HDFS artifact location details|
 |`http`|[`HTTPArtifact`](#httpartifact)|HTTP contains HTTP artifact location details|
+|`ks3`|[`Ks3Artifact`](#ks3artifact)|Ks3 contains ks3 artifact location details|
 |`mode`|`integer`|mode bits to use on this file, must be a value between 0 and 0777 set when loading input artifacts.|
 |`name`|`string`|name of the artifact. must be unique within a template's inputs/outputs.|
 |`optional`|`boolean`|Make Artifacts optional, if Artifacts doesn't generate or exist|
@@ -2368,6 +2369,7 @@ ArtifactLocation describes a location for a single or multiple artifacts. It is 
 |`git`|[`GitArtifact`](#gitartifact)|Git contains git artifact location details|
 |`hdfs`|[`HDFSArtifact`](#hdfsartifact)|HDFS contains HDFS artifact location details|
 |`http`|[`HTTPArtifact`](#httpartifact)|HTTP contains HTTP artifact location details|
+|`ks3`|[`Ks3Artifact`](#ks3artifact)|Ks3 contains ks3 artifact location details|
 |`oss`|[`OSSArtifact`](#ossartifact)|OSS contains OSS artifact location details|
 |`raw`|[`RawArtifact`](#rawartifact)|Raw contains raw artifact location details|
 |`s3`|[`S3Artifact`](#s3artifact)|S3 contains S3 artifact location details|
@@ -3167,6 +3169,7 @@ ArtifactRepository represents an artifact repository in which a controller will 
 |`azure`|[`AzureArtifactRepository`](#azureartifactrepository)|Azure stores artifact in an Azure Storage account|
 |`gcs`|[`GCSArtifactRepository`](#gcsartifactrepository)|GCS stores artifact in a GCS object store|
 |`hdfs`|[`HDFSArtifactRepository`](#hdfsartifactrepository)|HDFS stores artifacts in HDFS|
+|`ks3`|[`Ks3ArtifactRepository`](#ks3artifactrepository)|Ks3 stores artifact in a ks3|
 |`oss`|[`OSSArtifactRepository`](#ossartifactrepository)|OSS stores artifact in a OSS-compliant object store|
 |`s3`|[`S3ArtifactRepository`](#s3artifactrepository)|S3 stores artifact in a S3-compliant object store|
 
@@ -3413,6 +3416,20 @@ HTTPArtifact allows a file served on HTTP to be placed as an input artifact in a
 |`auth`|[`HTTPAuth`](#httpauth)|Auth contains information for client authentication|
 |`headers`|`Array<`[`Header`](#header)`>`|Headers are an optional list of headers to send with HTTP requests for artifacts|
 |`url`|`string`|URL of the artifact|
+
+## Ks3Artifact
+
+Ks3Artifact is the location of an ks3 artifact
+
+### Fields
+| Field Name | Field Type | Description   |
+|:----------:|:----------:|---------------|
+|`accessKeySecret`|[`SecretKeySelector`](#secretkeyselector)|AccessKeySecret is the secret selector to the bucket's access key|
+|`bucket`|`string`|Bucket is the name of the bucket|
+|`endpoint`|`string`|Endpoint is the hostname of the bucket endpoint|
+|`key`|`string`|Key is the path in the bucket where the artifact resides|
+|`region`|`string`|Region is the region of the bucket|
+|`secretKeySecret`|[`SecretKeySelector`](#secretkeyselector)|SecretKeySecret is the secret selector to the bucket's secret key|
 
 ## OSSArtifact
 
@@ -4155,6 +4172,21 @@ HDFSArtifactRepository defines the controller configuration for an HDFS artifact
 |`krbUsername`|`string`|KrbUsername is the Kerberos username used with Kerberos keytab It must be set if keytab is used.|
 |`pathFormat`|`string`|PathFormat is defines the format of path to store a file. Can reference workflow variables|
 
+## Ks3ArtifactRepository
+
+Ks3ArtifactRepository defines the controller configuration for an Ks3 artifact repository
+
+### Fields
+| Field Name | Field Type | Description   |
+|:----------:|:----------:|---------------|
+|`accessKeySecret`|[`SecretKeySelector`](#secretkeyselector)|AccessKeySecret is the secret selector to the bucket's access key|
+|`bucket`|`string`|Bucket is the name of the bucket|
+|`endpoint`|`string`|Endpoint is the hostname of the bucket endpoint|
+|`keyFormat`|`string`|KeyFormat is defines the format of how to store keys. Can reference workflow variables|
+|~`keyPrefix`~|~`string`~|~KeyPrefix is prefix used as part of the bucket key in which the controller will store artifacts.~ DEPRECATED. Use KeyFormat instead|
+|`region`|`string`|Region is the region of the bucket|
+|`secretKeySecret`|[`SecretKeySelector`](#secretkeyselector)|SecretKeySecret is the secret selector to the bucket's secret key|
+
 ## OSSArtifactRepository
 
 OSSArtifactRepository defines the controller configuration for an OSS artifact repository
@@ -4374,6 +4406,7 @@ ArtifactPaths expands a step from a collection of artifacts
 |`globalName`|`string`|GlobalName exports an output artifact to the global scope, making it available as '{{io.argoproj.workflow.v1alpha1.outputs.artifacts.XXXX}} and in workflow.status.outputs.artifacts|
 |`hdfs`|[`HDFSArtifact`](#hdfsartifact)|HDFS contains HDFS artifact location details|
 |`http`|[`HTTPArtifact`](#httpartifact)|HTTP contains HTTP artifact location details|
+|`ks3`|[`Ks3Artifact`](#ks3artifact)|Ks3 contains ks3 artifact location details|
 |`mode`|`integer`|mode bits to use on this file, must be a value between 0 and 0777 set when loading input artifacts.|
 |`name`|`string`|name of the artifact. must be unique within a template's inputs/outputs.|
 |`optional`|`boolean`|Make Artifacts optional, if Artifacts doesn't generate or exist|

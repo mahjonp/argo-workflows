@@ -234,7 +234,7 @@ argoexec-image:
 
 %-image:
 	[ ! -e dist/$* ] || mv dist/$* .
-	docker buildx build \
+	docker buildx build --platform linux/amd64 \
 		--build-arg GIT_COMMIT=$(GIT_COMMIT) \
 		--build-arg GIT_TAG=$(GIT_TAG) \
 		--build-arg GIT_TREE_STATE=$(GIT_TREE_STATE) \
@@ -281,7 +281,7 @@ swagger: \
 
 
 $(GOPATH)/bin/mockery:
-	go install github.com/vektra/mockery/v2@v2.10.0
+	go install github.com/vektra/mockery/v2@v2.26.0
 $(GOPATH)/bin/controller-gen:
 	go install sigs.k8s.io/controller-tools/cmd/controller-gen@v0.4.1
 $(GOPATH)/bin/go-to-protobuf:

@@ -12,6 +12,7 @@ import (
 	"github.com/argoproj/argo-workflows/v3/workflow/artifacts/git"
 	"github.com/argoproj/argo-workflows/v3/workflow/artifacts/hdfs"
 	"github.com/argoproj/argo-workflows/v3/workflow/artifacts/http"
+	"github.com/argoproj/argo-workflows/v3/workflow/artifacts/ks3"
 	"github.com/argoproj/argo-workflows/v3/workflow/artifacts/logging"
 	"github.com/argoproj/argo-workflows/v3/workflow/artifacts/oss"
 	"github.com/argoproj/argo-workflows/v3/workflow/artifacts/raw"
@@ -251,6 +252,31 @@ func newDriver(ctx context.Context, art *wfv1.Artifact, ri resource.Interface) (
 		}
 		return &driver, nil
 	}
+	if art.Ks3 != nil {
+		var accessKey string
+		var secretKey string
 
+		if art.Ks3.AccessKeySecret != nil && art.Ks3.AccessKeySecret.Name != "" {
+			accessKeyBytes, err := ri.GetSecret(ctx, art.Ks3.AccessKeySecret.Name, art.Ks3.AccessKeySecret.Key)
+			if err != nil {
+				return nil, err
+			}
+			accessKey = accessKeyBytes
+			secretKeyBytes, err := ri.GetSecret(ctx, art.Ks3.SecretKeySecret.Name, art.Ks3.SecretKeySecret.Key)
+			if err != nil {
+				return nil, err
+			}
+			secretKey = secretKeyBytes
+		}
+
+		driver := ks3.ArtifactDriver{
+			Endpoint:  art.Ks3.Endpoint,
+			AccessKey: accessKey,
+			SecretKey: secretKey,
+			Region:    art.Ks3.Region,
+		}
+
+		return &driver, nil
+	}
 	return nil, ErrUnsupportedDriver
 }

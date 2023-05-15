@@ -1131,6 +1131,9 @@ type ArtifactLocation struct {
 
 	// Azure contains Azure Storage artifact location details
 	Azure *AzureArtifact `json:"azure,omitempty" protobuf:"bytes,10,opt,name=azure"`
+
+	// Ks3 contains ks3 artifact location details
+	Ks3 *Ks3Artifact `json:"ks3,omitempty" protobuf:"bytes,11,opt,name=ks3"`
 }
 
 func (a *ArtifactLocation) Get() (ArtifactLocationType, error) {
@@ -1154,6 +1157,8 @@ func (a *ArtifactLocation) Get() (ArtifactLocationType, error) {
 		return a.Raw, nil
 	} else if a.S3 != nil {
 		return a.S3, nil
+	} else if a.Ks3 != nil {
+		return a.Ks3, nil
 	}
 	return nil, fmt.Errorf("You need to configure artifact storage. More information on how to do this can be found in the docs: https://argoproj.github.io/argo-workflows/configure-artifact-repository/")
 }
@@ -1178,6 +1183,8 @@ func (a *ArtifactLocation) SetType(x ArtifactLocationType) error {
 		a.Raw = &RawArtifact{}
 	case *S3Artifact:
 		a.S3 = &S3Artifact{}
+	case *Ks3Artifact:
+		a.Ks3 = &Ks3Artifact{}
 	default:
 		return fmt.Errorf("set type not supported for type: %v", reflect.TypeOf(v))
 	}
@@ -2772,6 +2779,45 @@ func (o *OSSArtifact) SetKey(key string) error {
 }
 
 func (o *OSSArtifact) HasLocation() bool {
+	return o != nil && o.Bucket != "" && o.Endpoint != "" && o.Key != ""
+}
+
+// Ks3Bucket contains the access information required for interfacing with an ks3 bucket
+type Ks3Bucket struct {
+	// Endpoint is the hostname of the bucket endpoint
+	Endpoint string `json:"endpoint,omitempty" protobuf:"bytes,1,opt,name=endpoint"`
+
+	// Bucket is the name of the bucket
+	Bucket string `json:"bucket,omitempty" protobuf:"bytes,2,opt,name=bucket"`
+
+	// Region is the region of the bucket
+	Region string `json:"region,omitempty" protobuf:"bytes,3,opt,name=region"`
+
+	// AccessKeySecret is the secret selector to the bucket's access key
+	AccessKeySecret *apiv1.SecretKeySelector `json:"accessKeySecret,omitempty" protobuf:"bytes,4,opt,name=accessKeySecret"`
+
+	// SecretKeySecret is the secret selector to the bucket's secret key
+	SecretKeySecret *apiv1.SecretKeySelector `json:"secretKeySecret,omitempty" protobuf:"bytes,5,opt,name=secretKeySecret"`
+}
+
+// Ks3Artifact is the location of an ks3 artifact
+type Ks3Artifact struct {
+	Ks3Bucket `json:",inline" protobuf:"bytes,1,opt,name=oSSBucket"`
+
+	// Key is the path in the bucket where the artifact resides
+	Key string `json:"key" protobuf:"bytes,2,opt,name=key"`
+}
+
+func (o *Ks3Artifact) GetKey() (string, error) {
+	return o.Key, nil
+}
+
+func (o *Ks3Artifact) SetKey(key string) error {
+	o.Key = key
+	return nil
+}
+
+func (o *Ks3Artifact) HasLocation() bool {
 	return o != nil && o.Bucket != "" && o.Endpoint != "" && o.Key != ""
 }
 

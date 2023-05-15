@@ -159,6 +159,9 @@ message ArtifactLocation {
 
   // Azure contains Azure Storage artifact location details
   optional AzureArtifact azure = 10;
+
+  // Ks3 contains ks3 artifact location details
+  optional Ks3Artifact ks3 = 11;
 }
 
 // ArtifactNodeSpec specifies the Artifacts that need to be deleted for a given Node
@@ -198,6 +201,9 @@ message ArtifactRepository {
 
   // Azure stores artifact in an Azure Storage account
   optional AzureArtifactRepository azure = 7;
+
+  // Ks3 stores artifact in a ks3
+  optional Ks3ArtifactRepository ks3 = 8;
 }
 
 // +protobuf.options.(gogoproto.goproto_stringer)=false
@@ -836,6 +842,44 @@ message Inputs {
 // +kubebuilder:validation:Type=object
 message Item {
   optional bytes value = 1;
+}
+
+// Ks3Artifact is the location of an ks3 artifact
+message Ks3Artifact {
+  optional Ks3Bucket oSSBucket = 1;
+
+  // Key is the path in the bucket where the artifact resides
+  optional string key = 2;
+}
+
+// Ks3ArtifactRepository defines the controller configuration for an Ks3 artifact repository
+message Ks3ArtifactRepository {
+  optional Ks3Bucket ks3Bucket = 1;
+
+  // KeyFormat is defines the format of how to store keys. Can reference workflow variables
+  optional string keyFormat = 2;
+
+  // KeyPrefix is prefix used as part of the bucket key in which the controller will store artifacts.
+  // DEPRECATED. Use KeyFormat instead
+  optional string keyPrefix = 3;
+}
+
+// Ks3Bucket contains the access information required for interfacing with an ks3 bucket
+message Ks3Bucket {
+  // Endpoint is the hostname of the bucket endpoint
+  optional string endpoint = 1;
+
+  // Bucket is the name of the bucket
+  optional string bucket = 2;
+
+  // Region is the region of the bucket
+  optional string region = 3;
+
+  // AccessKeySecret is the secret selector to the bucket's access key
+  optional k8s.io.api.core.v1.SecretKeySelector accessKeySecret = 4;
+
+  // SecretKeySecret is the secret selector to the bucket's secret key
+  optional k8s.io.api.core.v1.SecretKeySelector secretKeySecret = 5;
 }
 
 // LabelKeys is list of keys

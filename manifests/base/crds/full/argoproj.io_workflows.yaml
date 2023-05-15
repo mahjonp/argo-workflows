@@ -760,6 +760,41 @@ spec:
                           required:
                           - url
                           type: object
+                        ks3:
+                          properties:
+                            accessKeySecret:
+                              properties:
+                                key:
+                                  type: string
+                                name:
+                                  type: string
+                                optional:
+                                  type: boolean
+                              required:
+                              - key
+                              type: object
+                            bucket:
+                              type: string
+                            endpoint:
+                              type: string
+                            key:
+                              type: string
+                            region:
+                              type: string
+                            secretKeySecret:
+                              properties:
+                                key:
+                                  type: string
+                                name:
+                                  type: string
+                                optional:
+                                  type: boolean
+                              required:
+                              - key
+                              type: object
+                          required:
+                          - key
+                          type: object
                         mode:
                           format: int32
                           type: integer
@@ -1369,6 +1404,41 @@ spec:
                                     type: string
                                 required:
                                 - url
+                                type: object
+                              ks3:
+                                properties:
+                                  accessKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                  bucket:
+                                    type: string
+                                  endpoint:
+                                    type: string
+                                  key:
+                                    type: string
+                                  region:
+                                    type: string
+                                  secretKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                required:
+                                - key
                                 type: object
                               mode:
                                 format: int32
@@ -2541,6 +2611,41 @@ spec:
                             type: string
                         required:
                         - url
+                        type: object
+                      ks3:
+                        properties:
+                          accessKeySecret:
+                            properties:
+                              key:
+                                type: string
+                              name:
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                            - key
+                            type: object
+                          bucket:
+                            type: string
+                          endpoint:
+                            type: string
+                          key:
+                            type: string
+                          region:
+                            type: string
+                          secretKeySecret:
+                            properties:
+                              key:
+                                type: string
+                              name:
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                            - key
+                            type: object
+                        required:
+                        - key
                         type: object
                       oss:
                         properties:
@@ -4246,6 +4351,41 @@ spec:
                                         required:
                                         - url
                                         type: object
+                                      ks3:
+                                        properties:
+                                          accessKeySecret:
+                                            properties:
+                                              key:
+                                                type: string
+                                              name:
+                                                type: string
+                                              optional:
+                                                type: boolean
+                                            required:
+                                            - key
+                                            type: object
+                                          bucket:
+                                            type: string
+                                          endpoint:
+                                            type: string
+                                          key:
+                                            type: string
+                                          region:
+                                            type: string
+                                          secretKeySecret:
+                                            properties:
+                                              key:
+                                                type: string
+                                              name:
+                                                type: string
+                                              optional:
+                                                type: boolean
+                                            required:
+                                            - key
+                                            type: object
+                                        required:
+                                        - key
+                                        type: object
                                       mode:
                                         format: int32
                                         type: integer
@@ -4807,6 +4947,41 @@ spec:
                                                   type: string
                                               required:
                                               - url
+                                              type: object
+                                            ks3:
+                                              properties:
+                                                accessKeySecret:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    name:
+                                                      type: string
+                                                    optional:
+                                                      type: boolean
+                                                  required:
+                                                  - key
+                                                  type: object
+                                                bucket:
+                                                  type: string
+                                                endpoint:
+                                                  type: string
+                                                key:
+                                                  type: string
+                                                region:
+                                                  type: string
+                                                secretKeySecret:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    name:
+                                                      type: string
+                                                    optional:
+                                                      type: boolean
+                                                  required:
+                                                  - key
+                                                  type: object
+                                              required:
+                                              - key
                                               type: object
                                             mode:
                                               format: int32
@@ -5420,6 +5595,41 @@ spec:
                                     type: string
                                 required:
                                 - url
+                                type: object
+                              ks3:
+                                properties:
+                                  accessKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                  bucket:
+                                    type: string
+                                  endpoint:
+                                    type: string
+                                  key:
+                                    type: string
+                                  region:
+                                    type: string
+                                  secretKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                required:
+                                - key
                                 type: object
                               mode:
                                 format: int32
@@ -6584,6 +6794,41 @@ spec:
                               required:
                               - url
                               type: object
+                            ks3:
+                              properties:
+                                accessKeySecret:
+                                  properties:
+                                    key:
+                                      type: string
+                                    name:
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  required:
+                                  - key
+                                  type: object
+                                bucket:
+                                  type: string
+                                endpoint:
+                                  type: string
+                                key:
+                                  type: string
+                                region:
+                                  type: string
+                                secretKeySecret:
+                                  properties:
+                                    key:
+                                      type: string
+                                    name:
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  required:
+                                  - key
+                                  type: object
+                              required:
+                              - key
+                              type: object
                             mode:
                               format: int32
                               type: integer
@@ -7234,6 +7479,41 @@ spec:
                               required:
                               - url
                               type: object
+                            ks3:
+                              properties:
+                                accessKeySecret:
+                                  properties:
+                                    key:
+                                      type: string
+                                    name:
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  required:
+                                  - key
+                                  type: object
+                                bucket:
+                                  type: string
+                                endpoint:
+                                  type: string
+                                key:
+                                  type: string
+                                region:
+                                  type: string
+                                secretKeySecret:
+                                  properties:
+                                    key:
+                                      type: string
+                                    name:
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  required:
+                                  - key
+                                  type: object
+                              required:
+                              - key
+                              type: object
                             mode:
                               format: int32
                               type: integer
@@ -7806,6 +8086,41 @@ spec:
                                     type: string
                                 required:
                                 - url
+                                type: object
+                              ks3:
+                                properties:
+                                  accessKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                  bucket:
+                                    type: string
+                                  endpoint:
+                                    type: string
+                                  key:
+                                    type: string
+                                  region:
+                                    type: string
+                                  secretKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                required:
+                                - key
                                 type: object
                               mode:
                                 format: int32
@@ -10631,6 +10946,41 @@ spec:
                           required:
                           - url
                           type: object
+                        ks3:
+                          properties:
+                            accessKeySecret:
+                              properties:
+                                key:
+                                  type: string
+                                name:
+                                  type: string
+                                optional:
+                                  type: boolean
+                              required:
+                              - key
+                              type: object
+                            bucket:
+                              type: string
+                            endpoint:
+                              type: string
+                            key:
+                              type: string
+                            region:
+                              type: string
+                            secretKeySecret:
+                              properties:
+                                key:
+                                  type: string
+                                name:
+                                  type: string
+                                optional:
+                                  type: boolean
+                              required:
+                              - key
+                              type: object
+                          required:
+                          - key
+                          type: object
                         oss:
                           properties:
                             accessKeySecret:
@@ -12335,6 +12685,41 @@ spec:
                                           required:
                                           - url
                                           type: object
+                                        ks3:
+                                          properties:
+                                            accessKeySecret:
+                                              properties:
+                                                key:
+                                                  type: string
+                                                name:
+                                                  type: string
+                                                optional:
+                                                  type: boolean
+                                              required:
+                                              - key
+                                              type: object
+                                            bucket:
+                                              type: string
+                                            endpoint:
+                                              type: string
+                                            key:
+                                              type: string
+                                            region:
+                                              type: string
+                                            secretKeySecret:
+                                              properties:
+                                                key:
+                                                  type: string
+                                                name:
+                                                  type: string
+                                                optional:
+                                                  type: boolean
+                                              required:
+                                              - key
+                                              type: object
+                                          required:
+                                          - key
+                                          type: object
                                         mode:
                                           format: int32
                                           type: integer
@@ -12896,6 +13281,41 @@ spec:
                                                     type: string
                                                 required:
                                                 - url
+                                                type: object
+                                              ks3:
+                                                properties:
+                                                  accessKeySecret:
+                                                    properties:
+                                                      key:
+                                                        type: string
+                                                      name:
+                                                        type: string
+                                                      optional:
+                                                        type: boolean
+                                                    required:
+                                                    - key
+                                                    type: object
+                                                  bucket:
+                                                    type: string
+                                                  endpoint:
+                                                    type: string
+                                                  key:
+                                                    type: string
+                                                  region:
+                                                    type: string
+                                                  secretKeySecret:
+                                                    properties:
+                                                      key:
+                                                        type: string
+                                                      name:
+                                                        type: string
+                                                      optional:
+                                                        type: boolean
+                                                    required:
+                                                    - key
+                                                    type: object
+                                                required:
+                                                - key
                                                 type: object
                                               mode:
                                                 format: int32
@@ -13509,6 +13929,41 @@ spec:
                                       type: string
                                   required:
                                   - url
+                                  type: object
+                                ks3:
+                                  properties:
+                                    accessKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                    bucket:
+                                      type: string
+                                    endpoint:
+                                      type: string
+                                    key:
+                                      type: string
+                                    region:
+                                      type: string
+                                    secretKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                  required:
+                                  - key
                                   type: object
                                 mode:
                                   format: int32
@@ -14673,6 +15128,41 @@ spec:
                                 required:
                                 - url
                                 type: object
+                              ks3:
+                                properties:
+                                  accessKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                  bucket:
+                                    type: string
+                                  endpoint:
+                                    type: string
+                                  key:
+                                    type: string
+                                  region:
+                                    type: string
+                                  secretKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                required:
+                                - key
+                                type: object
                               mode:
                                 format: int32
                                 type: integer
@@ -15323,6 +15813,41 @@ spec:
                                 required:
                                 - url
                                 type: object
+                              ks3:
+                                properties:
+                                  accessKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                  bucket:
+                                    type: string
+                                  endpoint:
+                                    type: string
+                                  key:
+                                    type: string
+                                  region:
+                                    type: string
+                                  secretKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                required:
+                                - key
+                                type: object
                               mode:
                                 format: int32
                                 type: integer
@@ -15895,6 +16420,41 @@ spec:
                                       type: string
                                   required:
                                   - url
+                                  type: object
+                                ks3:
+                                  properties:
+                                    accessKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                    bucket:
+                                      type: string
+                                    endpoint:
+                                      type: string
+                                    key:
+                                      type: string
+                                    region:
+                                      type: string
+                                    secretKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                  required:
+                                  - key
                                   type: object
                                 mode:
                                   format: int32
@@ -19069,6 +19629,41 @@ spec:
                           pathFormat:
                             type: string
                         type: object
+                      ks3:
+                        properties:
+                          accessKeySecret:
+                            properties:
+                              key:
+                                type: string
+                              name:
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                            - key
+                            type: object
+                          bucket:
+                            type: string
+                          endpoint:
+                            type: string
+                          keyFormat:
+                            type: string
+                          keyPrefix:
+                            type: string
+                          region:
+                            type: string
+                          secretKeySecret:
+                            properties:
+                              key:
+                                type: string
+                              name:
+                                type: string
+                              optional:
+                                type: boolean
+                            required:
+                            - key
+                            type: object
+                        type: object
                       oss:
                         properties:
                           accessKeySecret:
@@ -19590,6 +20185,41 @@ spec:
                                     type: string
                                 required:
                                 - url
+                                type: object
+                              ks3:
+                                properties:
+                                  accessKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                  bucket:
+                                    type: string
+                                  endpoint:
+                                    type: string
+                                  key:
+                                    type: string
+                                  region:
+                                    type: string
+                                  secretKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                required:
+                                - key
                                 type: object
                               mode:
                                 format: int32
@@ -20157,6 +20787,41 @@ spec:
                                     type: string
                                 required:
                                 - url
+                                type: object
+                              ks3:
+                                properties:
+                                  accessKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                  bucket:
+                                    type: string
+                                  endpoint:
+                                    type: string
+                                  key:
+                                    type: string
+                                  region:
+                                    type: string
+                                  secretKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                required:
+                                - key
                                 type: object
                               mode:
                                 format: int32
@@ -20749,6 +21414,41 @@ spec:
                               type: string
                           required:
                           - url
+                          type: object
+                        ks3:
+                          properties:
+                            accessKeySecret:
+                              properties:
+                                key:
+                                  type: string
+                                name:
+                                  type: string
+                                optional:
+                                  type: boolean
+                              required:
+                              - key
+                              type: object
+                            bucket:
+                              type: string
+                            endpoint:
+                              type: string
+                            key:
+                              type: string
+                            region:
+                              type: string
+                            secretKeySecret:
+                              properties:
+                                key:
+                                  type: string
+                                name:
+                                  type: string
+                                optional:
+                                  type: boolean
+                              required:
+                              - key
+                              type: object
+                          required:
+                          - key
                           type: object
                         mode:
                           format: int32
@@ -22306,6 +23006,41 @@ spec:
                               type: string
                           required:
                           - url
+                          type: object
+                        ks3:
+                          properties:
+                            accessKeySecret:
+                              properties:
+                                key:
+                                  type: string
+                                name:
+                                  type: string
+                                optional:
+                                  type: boolean
+                              required:
+                              - key
+                              type: object
+                            bucket:
+                              type: string
+                            endpoint:
+                              type: string
+                            key:
+                              type: string
+                            region:
+                              type: string
+                            secretKeySecret:
+                              properties:
+                                key:
+                                  type: string
+                                name:
+                                  type: string
+                                optional:
+                                  type: boolean
+                              required:
+                              - key
+                              type: object
+                          required:
+                          - key
                           type: object
                         oss:
                           properties:
@@ -24011,6 +24746,41 @@ spec:
                                           required:
                                           - url
                                           type: object
+                                        ks3:
+                                          properties:
+                                            accessKeySecret:
+                                              properties:
+                                                key:
+                                                  type: string
+                                                name:
+                                                  type: string
+                                                optional:
+                                                  type: boolean
+                                              required:
+                                              - key
+                                              type: object
+                                            bucket:
+                                              type: string
+                                            endpoint:
+                                              type: string
+                                            key:
+                                              type: string
+                                            region:
+                                              type: string
+                                            secretKeySecret:
+                                              properties:
+                                                key:
+                                                  type: string
+                                                name:
+                                                  type: string
+                                                optional:
+                                                  type: boolean
+                                              required:
+                                              - key
+                                              type: object
+                                          required:
+                                          - key
+                                          type: object
                                         mode:
                                           format: int32
                                           type: integer
@@ -24572,6 +25342,41 @@ spec:
                                                     type: string
                                                 required:
                                                 - url
+                                                type: object
+                                              ks3:
+                                                properties:
+                                                  accessKeySecret:
+                                                    properties:
+                                                      key:
+                                                        type: string
+                                                      name:
+                                                        type: string
+                                                      optional:
+                                                        type: boolean
+                                                    required:
+                                                    - key
+                                                    type: object
+                                                  bucket:
+                                                    type: string
+                                                  endpoint:
+                                                    type: string
+                                                  key:
+                                                    type: string
+                                                  region:
+                                                    type: string
+                                                  secretKeySecret:
+                                                    properties:
+                                                      key:
+                                                        type: string
+                                                      name:
+                                                        type: string
+                                                      optional:
+                                                        type: boolean
+                                                    required:
+                                                    - key
+                                                    type: object
+                                                required:
+                                                - key
                                                 type: object
                                               mode:
                                                 format: int32
@@ -25185,6 +25990,41 @@ spec:
                                       type: string
                                   required:
                                   - url
+                                  type: object
+                                ks3:
+                                  properties:
+                                    accessKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                    bucket:
+                                      type: string
+                                    endpoint:
+                                      type: string
+                                    key:
+                                      type: string
+                                    region:
+                                      type: string
+                                    secretKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                  required:
+                                  - key
                                   type: object
                                 mode:
                                   format: int32
@@ -26349,6 +27189,41 @@ spec:
                                 required:
                                 - url
                                 type: object
+                              ks3:
+                                properties:
+                                  accessKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                  bucket:
+                                    type: string
+                                  endpoint:
+                                    type: string
+                                  key:
+                                    type: string
+                                  region:
+                                    type: string
+                                  secretKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                required:
+                                - key
+                                type: object
                               mode:
                                 format: int32
                                 type: integer
@@ -26999,6 +27874,41 @@ spec:
                                 required:
                                 - url
                                 type: object
+                              ks3:
+                                properties:
+                                  accessKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                  bucket:
+                                    type: string
+                                  endpoint:
+                                    type: string
+                                  key:
+                                    type: string
+                                  region:
+                                    type: string
+                                  secretKeySecret:
+                                    properties:
+                                      key:
+                                        type: string
+                                      name:
+                                        type: string
+                                      optional:
+                                        type: boolean
+                                    required:
+                                    - key
+                                    type: object
+                                required:
+                                - key
+                                type: object
                               mode:
                                 format: int32
                                 type: integer
@@ -27571,6 +28481,41 @@ spec:
                                       type: string
                                   required:
                                   - url
+                                  type: object
+                                ks3:
+                                  properties:
+                                    accessKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                    bucket:
+                                      type: string
+                                    endpoint:
+                                      type: string
+                                    key:
+                                      type: string
+                                    region:
+                                      type: string
+                                    secretKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                  required:
+                                  - key
                                   type: object
                                 mode:
                                   format: int32
@@ -30443,6 +31388,41 @@ spec:
                               required:
                               - url
                               type: object
+                            ks3:
+                              properties:
+                                accessKeySecret:
+                                  properties:
+                                    key:
+                                      type: string
+                                    name:
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  required:
+                                  - key
+                                  type: object
+                                bucket:
+                                  type: string
+                                endpoint:
+                                  type: string
+                                key:
+                                  type: string
+                                region:
+                                  type: string
+                                secretKeySecret:
+                                  properties:
+                                    key:
+                                      type: string
+                                    name:
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  required:
+                                  - key
+                                  type: object
+                              required:
+                              - key
+                              type: object
                             mode:
                               format: int32
                               type: integer
@@ -31052,6 +32032,41 @@ spec:
                                         type: string
                                     required:
                                     - url
+                                    type: object
+                                  ks3:
+                                    properties:
+                                      accessKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                      bucket:
+                                        type: string
+                                      endpoint:
+                                        type: string
+                                      key:
+                                        type: string
+                                      region:
+                                        type: string
+                                      secretKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                    required:
+                                    - key
                                     type: object
                                   mode:
                                     format: int32
@@ -32224,6 +33239,41 @@ spec:
                                 type: string
                             required:
                             - url
+                            type: object
+                          ks3:
+                            properties:
+                              accessKeySecret:
+                                properties:
+                                  key:
+                                    type: string
+                                  name:
+                                    type: string
+                                  optional:
+                                    type: boolean
+                                required:
+                                - key
+                                type: object
+                              bucket:
+                                type: string
+                              endpoint:
+                                type: string
+                              key:
+                                type: string
+                              region:
+                                type: string
+                              secretKeySecret:
+                                properties:
+                                  key:
+                                    type: string
+                                  name:
+                                    type: string
+                                  optional:
+                                    type: boolean
+                                required:
+                                - key
+                                type: object
+                            required:
+                            - key
                             type: object
                           oss:
                             properties:
@@ -33929,6 +34979,41 @@ spec:
                                             required:
                                             - url
                                             type: object
+                                          ks3:
+                                            properties:
+                                              accessKeySecret:
+                                                properties:
+                                                  key:
+                                                    type: string
+                                                  name:
+                                                    type: string
+                                                  optional:
+                                                    type: boolean
+                                                required:
+                                                - key
+                                                type: object
+                                              bucket:
+                                                type: string
+                                              endpoint:
+                                                type: string
+                                              key:
+                                                type: string
+                                              region:
+                                                type: string
+                                              secretKeySecret:
+                                                properties:
+                                                  key:
+                                                    type: string
+                                                  name:
+                                                    type: string
+                                                  optional:
+                                                    type: boolean
+                                                required:
+                                                - key
+                                                type: object
+                                            required:
+                                            - key
+                                            type: object
                                           mode:
                                             format: int32
                                             type: integer
@@ -34490,6 +35575,41 @@ spec:
                                                       type: string
                                                   required:
                                                   - url
+                                                  type: object
+                                                ks3:
+                                                  properties:
+                                                    accessKeySecret:
+                                                      properties:
+                                                        key:
+                                                          type: string
+                                                        name:
+                                                          type: string
+                                                        optional:
+                                                          type: boolean
+                                                      required:
+                                                      - key
+                                                      type: object
+                                                    bucket:
+                                                      type: string
+                                                    endpoint:
+                                                      type: string
+                                                    key:
+                                                      type: string
+                                                    region:
+                                                      type: string
+                                                    secretKeySecret:
+                                                      properties:
+                                                        key:
+                                                          type: string
+                                                        name:
+                                                          type: string
+                                                        optional:
+                                                          type: boolean
+                                                      required:
+                                                      - key
+                                                      type: object
+                                                  required:
+                                                  - key
                                                   type: object
                                                 mode:
                                                   format: int32
@@ -35103,6 +36223,41 @@ spec:
                                         type: string
                                     required:
                                     - url
+                                    type: object
+                                  ks3:
+                                    properties:
+                                      accessKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                      bucket:
+                                        type: string
+                                      endpoint:
+                                        type: string
+                                      key:
+                                        type: string
+                                      region:
+                                        type: string
+                                      secretKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                    required:
+                                    - key
                                     type: object
                                   mode:
                                     format: int32
@@ -36267,6 +37422,41 @@ spec:
                                   required:
                                   - url
                                   type: object
+                                ks3:
+                                  properties:
+                                    accessKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                    bucket:
+                                      type: string
+                                    endpoint:
+                                      type: string
+                                    key:
+                                      type: string
+                                    region:
+                                      type: string
+                                    secretKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                  required:
+                                  - key
+                                  type: object
                                 mode:
                                   format: int32
                                   type: integer
@@ -36917,6 +38107,41 @@ spec:
                                   required:
                                   - url
                                   type: object
+                                ks3:
+                                  properties:
+                                    accessKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                    bucket:
+                                      type: string
+                                    endpoint:
+                                      type: string
+                                    key:
+                                      type: string
+                                    region:
+                                      type: string
+                                    secretKeySecret:
+                                      properties:
+                                        key:
+                                          type: string
+                                        name:
+                                          type: string
+                                        optional:
+                                          type: boolean
+                                      required:
+                                      - key
+                                      type: object
+                                  required:
+                                  - key
+                                  type: object
                                 mode:
                                   format: int32
                                   type: integer
@@ -37489,6 +38714,41 @@ spec:
                                         type: string
                                     required:
                                     - url
+                                    type: object
+                                  ks3:
+                                    properties:
+                                      accessKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                      bucket:
+                                        type: string
+                                      endpoint:
+                                        type: string
+                                      key:
+                                        type: string
+                                      region:
+                                        type: string
+                                      secretKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                    required:
+                                    - key
                                     type: object
                                   mode:
                                     format: int32
@@ -40314,6 +41574,41 @@ spec:
                               required:
                               - url
                               type: object
+                            ks3:
+                              properties:
+                                accessKeySecret:
+                                  properties:
+                                    key:
+                                      type: string
+                                    name:
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  required:
+                                  - key
+                                  type: object
+                                bucket:
+                                  type: string
+                                endpoint:
+                                  type: string
+                                key:
+                                  type: string
+                                region:
+                                  type: string
+                                secretKeySecret:
+                                  properties:
+                                    key:
+                                      type: string
+                                    name:
+                                      type: string
+                                    optional:
+                                      type: boolean
+                                  required:
+                                  - key
+                                  type: object
+                              required:
+                              - key
+                              type: object
                             oss:
                               properties:
                                 accessKeySecret:
@@ -42018,6 +43313,41 @@ spec:
                                               required:
                                               - url
                                               type: object
+                                            ks3:
+                                              properties:
+                                                accessKeySecret:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    name:
+                                                      type: string
+                                                    optional:
+                                                      type: boolean
+                                                  required:
+                                                  - key
+                                                  type: object
+                                                bucket:
+                                                  type: string
+                                                endpoint:
+                                                  type: string
+                                                key:
+                                                  type: string
+                                                region:
+                                                  type: string
+                                                secretKeySecret:
+                                                  properties:
+                                                    key:
+                                                      type: string
+                                                    name:
+                                                      type: string
+                                                    optional:
+                                                      type: boolean
+                                                  required:
+                                                  - key
+                                                  type: object
+                                              required:
+                                              - key
+                                              type: object
                                             mode:
                                               format: int32
                                               type: integer
@@ -42579,6 +43909,41 @@ spec:
                                                         type: string
                                                     required:
                                                     - url
+                                                    type: object
+                                                  ks3:
+                                                    properties:
+                                                      accessKeySecret:
+                                                        properties:
+                                                          key:
+                                                            type: string
+                                                          name:
+                                                            type: string
+                                                          optional:
+                                                            type: boolean
+                                                        required:
+                                                        - key
+                                                        type: object
+                                                      bucket:
+                                                        type: string
+                                                      endpoint:
+                                                        type: string
+                                                      key:
+                                                        type: string
+                                                      region:
+                                                        type: string
+                                                      secretKeySecret:
+                                                        properties:
+                                                          key:
+                                                            type: string
+                                                          name:
+                                                            type: string
+                                                          optional:
+                                                            type: boolean
+                                                        required:
+                                                        - key
+                                                        type: object
+                                                    required:
+                                                    - key
                                                     type: object
                                                   mode:
                                                     format: int32
@@ -43192,6 +44557,41 @@ spec:
                                           type: string
                                       required:
                                       - url
+                                      type: object
+                                    ks3:
+                                      properties:
+                                        accessKeySecret:
+                                          properties:
+                                            key:
+                                              type: string
+                                            name:
+                                              type: string
+                                            optional:
+                                              type: boolean
+                                          required:
+                                          - key
+                                          type: object
+                                        bucket:
+                                          type: string
+                                        endpoint:
+                                          type: string
+                                        key:
+                                          type: string
+                                        region:
+                                          type: string
+                                        secretKeySecret:
+                                          properties:
+                                            key:
+                                              type: string
+                                            name:
+                                              type: string
+                                            optional:
+                                              type: boolean
+                                          required:
+                                          - key
+                                          type: object
+                                      required:
+                                      - key
                                       type: object
                                     mode:
                                       format: int32
@@ -44356,6 +45756,41 @@ spec:
                                     required:
                                     - url
                                     type: object
+                                  ks3:
+                                    properties:
+                                      accessKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                      bucket:
+                                        type: string
+                                      endpoint:
+                                        type: string
+                                      key:
+                                        type: string
+                                      region:
+                                        type: string
+                                      secretKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                    required:
+                                    - key
+                                    type: object
                                   mode:
                                     format: int32
                                     type: integer
@@ -45006,6 +46441,41 @@ spec:
                                     required:
                                     - url
                                     type: object
+                                  ks3:
+                                    properties:
+                                      accessKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                      bucket:
+                                        type: string
+                                      endpoint:
+                                        type: string
+                                      key:
+                                        type: string
+                                      region:
+                                        type: string
+                                      secretKeySecret:
+                                        properties:
+                                          key:
+                                            type: string
+                                          name:
+                                            type: string
+                                          optional:
+                                            type: boolean
+                                        required:
+                                        - key
+                                        type: object
+                                    required:
+                                    - key
+                                    type: object
                                   mode:
                                     format: int32
                                     type: integer
@@ -45578,6 +47048,41 @@ spec:
                                           type: string
                                       required:
                                       - url
+                                      type: object
+                                    ks3:
+                                      properties:
+                                        accessKeySecret:
+                                          properties:
+                                            key:
+                                              type: string
+                                            name:
+                                              type: string
+                                            optional:
+                                              type: boolean
+                                          required:
+                                          - key
+                                          type: object
+                                        bucket:
+                                          type: string
+                                        endpoint:
+                                          type: string
+                                        key:
+                                          type: string
+                                        region:
+                                          type: string
+                                        secretKeySecret:
+                                          properties:
+                                            key:
+                                              type: string
+                                            name:
+                                              type: string
+                                            optional:
+                                              type: boolean
+                                          required:
+                                          - key
+                                          type: object
+                                      required:
+                                      - key
                                       type: object
                                     mode:
                                       format: int32

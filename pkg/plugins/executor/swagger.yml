@@ -123,6 +123,8 @@ definitions:
         $ref: '#/definitions/HDFSArtifact'
       http:
         $ref: '#/definitions/HTTPArtifact'
+      ks3:
+        $ref: '#/definitions/Ks3Artifact'
       mode:
         description: |-
           mode bits to use on this file, must be a value between 0 and 0777
@@ -189,6 +191,8 @@ definitions:
         $ref: '#/definitions/HDFSArtifact'
       http:
         $ref: '#/definitions/HTTPArtifact'
+      ks3:
+        $ref: '#/definitions/Ks3Artifact'
       oss:
         $ref: '#/definitions/OSSArtifact'
       raw:
@@ -235,6 +239,8 @@ definitions:
         $ref: '#/definitions/HDFSArtifact'
       http:
         $ref: '#/definitions/HTTPArtifact'
+      ks3:
+        $ref: '#/definitions/Ks3Artifact'
       mode:
         description: |-
           mode bits to use on this file, must be a value between 0 and 0777
@@ -1926,6 +1932,26 @@ definitions:
           May not start with the string '..'.
         type: string
     title: Maps a string key to a path within a volume.
+    type: object
+  Ks3Artifact:
+    description: Ks3Artifact is the location of an ks3 artifact
+    properties:
+      accessKeySecret:
+        $ref: '#/definitions/SecretKeySelector'
+      bucket:
+        description: Bucket is the name of the bucket
+        type: string
+      endpoint:
+        description: Endpoint is the hostname of the bucket endpoint
+        type: string
+      key:
+        description: Key is the path in the bucket where the artifact resides
+        type: string
+      region:
+        description: Region is the region of the bucket
+        type: string
+      secretKeySecret:
+        $ref: '#/definitions/SecretKeySelector'
     type: object
   LabelSelector:
     description: |-

@@ -26,6 +26,8 @@ type ArtifactRepository struct {
 	GCS *GCSArtifactRepository `json:"gcs,omitempty" protobuf:"bytes,6,opt,name=gcs"`
 	// Azure stores artifact in an Azure Storage account
 	Azure *AzureArtifactRepository `json:"azure,omitempty" protobuf:"bytes,7,opt,name=azure"`
+	// Ks3 stores artifact in a ks3
+	Ks3 *Ks3ArtifactRepository `json:"ks3,omitempty" protobuf:"bytes,8,opt,name=ks3"`
 }
 
 func (a *ArtifactRepository) IsArchiveLogs() bool {
@@ -51,6 +53,8 @@ func (a *ArtifactRepository) Get() ArtifactRepositoryType {
 		return a.OSS
 	} else if a.S3 != nil {
 		return a.S3
+	} else if a.Ks3 != nil {
+		return a.Ks3
 	}
 	return nil
 }
@@ -170,6 +174,26 @@ func (r *HDFSArtifactRepository) IntoArtifactLocation(l *ArtifactLocation) {
 		p = DefaultArchivePattern
 	}
 	l.HDFS = &HDFSArtifact{HDFSConfig: r.HDFSConfig, Path: p, Force: r.Force}
+}
+
+// Ks3ArtifactRepository defines the controller configuration for an Ks3 artifact repository
+type Ks3ArtifactRepository struct {
+	Ks3Bucket `json:",inline" protobuf:"bytes,1,opt,name=ks3Bucket"`
+
+	// KeyFormat is defines the format of how to store keys. Can reference workflow variables
+	KeyFormat string `json:"keyFormat,omitempty" protobuf:"bytes,2,opt,name=keyFormat"`
+
+	// KeyPrefix is prefix used as part of the bucket key in which the controller will store artifacts.
+	// DEPRECATED. Use KeyFormat instead
+	KeyPrefix string `json:"keyPrefix,omitempty" protobuf:"bytes,3,opt,name=keyPrefix"`
+}
+
+func (r *Ks3ArtifactRepository) IntoArtifactLocation(l *ArtifactLocation) {
+	k := r.KeyFormat
+	if k == "" {
+		k = path.Join(r.KeyPrefix, DefaultArchivePattern)
+	}
+	l.Ks3 = &Ks3Artifact{Ks3Bucket: r.Ks3Bucket, Key: k}
 }
 
 // MetricsConfig defines a config for a metrics server

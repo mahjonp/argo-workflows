@@ -81,6 +81,9 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Histogram":                     schema_pkg_apis_workflow_v1alpha1_Histogram(ref),
 		"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Inputs":                        schema_pkg_apis_workflow_v1alpha1_Inputs(ref),
 		"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Item":                          schema_pkg_apis_workflow_v1alpha1_Item(ref),
+		"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3Artifact":                   schema_pkg_apis_workflow_v1alpha1_Ks3Artifact(ref),
+		"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3ArtifactRepository":         schema_pkg_apis_workflow_v1alpha1_Ks3ArtifactRepository(ref),
+		"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3Bucket":                     schema_pkg_apis_workflow_v1alpha1_Ks3Bucket(ref),
 		"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.LabelKeys":                     schema_pkg_apis_workflow_v1alpha1_LabelKeys(ref),
 		"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.LabelValueFrom":                schema_pkg_apis_workflow_v1alpha1_LabelValueFrom(ref),
 		"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.LabelValues":                   schema_pkg_apis_workflow_v1alpha1_LabelValues(ref),
@@ -411,6 +414,12 @@ func schema_pkg_apis_workflow_v1alpha1_Artifact(ref common.ReferenceCallback) co
 							Ref:         ref("github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifact"),
 						},
 					},
+					"ks3": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Ks3 contains ks3 artifact location details",
+							Ref:         ref("github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3Artifact"),
+						},
+					},
 					"globalName": {
 						SchemaProps: spec.SchemaProps{
 							Description: "GlobalName exports an output artifact to the global scope, making it available as '{{workflow.outputs.artifacts.XXXX}} and in workflow.status.outputs.artifacts",
@@ -470,7 +479,7 @@ func schema_pkg_apis_workflow_v1alpha1_Artifact(ref common.ReferenceCallback) co
 			},
 		},
 		Dependencies: []string{
-			"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArchiveStrategy", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactGC", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactoryArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GCSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GitArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HDFSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HTTPArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.OSSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.RawArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.S3Artifact"},
+			"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArchiveStrategy", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactGC", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactoryArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GCSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GitArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HDFSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HTTPArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3Artifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.OSSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.RawArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.S3Artifact"},
 	}
 }
 
@@ -637,11 +646,17 @@ func schema_pkg_apis_workflow_v1alpha1_ArtifactLocation(ref common.ReferenceCall
 							Ref:         ref("github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifact"),
 						},
 					},
+					"ks3": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Ks3 contains ks3 artifact location details",
+							Ref:         ref("github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3Artifact"),
+						},
+					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactoryArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GCSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GitArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HDFSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HTTPArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.OSSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.RawArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.S3Artifact"},
+			"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactoryArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GCSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GitArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HDFSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HTTPArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3Artifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.OSSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.RawArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.S3Artifact"},
 	}
 }
 
@@ -778,6 +793,12 @@ func schema_pkg_apis_workflow_v1alpha1_ArtifactPaths(ref common.ReferenceCallbac
 							Ref:         ref("github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifact"),
 						},
 					},
+					"ks3": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Ks3 contains ks3 artifact location details",
+							Ref:         ref("github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3Artifact"),
+						},
+					},
 					"globalName": {
 						SchemaProps: spec.SchemaProps{
 							Description: "GlobalName exports an output artifact to the global scope, making it available as '{{workflow.outputs.artifacts.XXXX}} and in workflow.status.outputs.artifacts",
@@ -837,7 +858,7 @@ func schema_pkg_apis_workflow_v1alpha1_ArtifactPaths(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArchiveStrategy", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactGC", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactoryArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GCSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GitArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HDFSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HTTPArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.OSSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.RawArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.S3Artifact"},
+			"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArchiveStrategy", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactGC", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactoryArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GCSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GitArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HDFSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HTTPArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3Artifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.OSSArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.RawArtifact", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.S3Artifact"},
 	}
 }
 
@@ -891,11 +912,17 @@ func schema_pkg_apis_workflow_v1alpha1_ArtifactRepository(ref common.ReferenceCa
 							Ref:         ref("github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifactRepository"),
 						},
 					},
+					"ks3": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Ks3 stores artifact in a ks3",
+							Ref:         ref("github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3ArtifactRepository"),
+						},
+					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactoryArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GCSArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HDFSArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.OSSArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.S3ArtifactRepository"},
+			"github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.ArtifactoryArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.AzureArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.GCSArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.HDFSArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.Ks3ArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.OSSArtifactRepository", "github.com/argoproj/argo-workflows/v3/pkg/apis/workflow/v1alpha1.S3ArtifactRepository"},
 	}
 }
 
@@ -3464,6 +3491,173 @@ func schema_pkg_apis_workflow_v1alpha1_Item(ref common.ReferenceCallback) common
 				Format:      Item{}.OpenAPISchemaFormat(),
 			},
 		},
+	}
+}
+
+func schema_pkg_apis_workflow_v1alpha1_Ks3Artifact(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Ks3Artifact is the location of an ks3 artifact",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Endpoint is the hostname of the bucket endpoint",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"bucket": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Bucket is the name of the bucket",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"region": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Region is the region of the bucket",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"accessKeySecret": {
+						SchemaProps: spec.SchemaProps{
+							Description: "AccessKeySecret is the secret selector to the bucket's access key",
+							Ref:         ref("k8s.io/api/core/v1.SecretKeySelector"),
+						},
+					},
+					"secretKeySecret": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SecretKeySecret is the secret selector to the bucket's secret key",
+							Ref:         ref("k8s.io/api/core/v1.SecretKeySelector"),
+						},
+					},
+					"key": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Key is the path in the bucket where the artifact resides",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"key"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.SecretKeySelector"},
+	}
+}
+
+func schema_pkg_apis_workflow_v1alpha1_Ks3ArtifactRepository(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Ks3ArtifactRepository defines the controller configuration for an Ks3 artifact repository",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Endpoint is the hostname of the bucket endpoint",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"bucket": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Bucket is the name of the bucket",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"region": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Region is the region of the bucket",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"accessKeySecret": {
+						SchemaProps: spec.SchemaProps{
+							Description: "AccessKeySecret is the secret selector to the bucket's access key",
+							Ref:         ref("k8s.io/api/core/v1.SecretKeySelector"),
+						},
+					},
+					"secretKeySecret": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SecretKeySecret is the secret selector to the bucket's secret key",
+							Ref:         ref("k8s.io/api/core/v1.SecretKeySelector"),
+						},
+					},
+					"keyFormat": {
+						SchemaProps: spec.SchemaProps{
+							Description: "KeyFormat is defines the format of how to store keys. Can reference workflow variables",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"keyPrefix": {
+						SchemaProps: spec.SchemaProps{
+							Description: "KeyPrefix is prefix used as part of the bucket key in which the controller will store artifacts. DEPRECATED. Use KeyFormat instead",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.SecretKeySelector"},
+	}
+}
+
+func schema_pkg_apis_workflow_v1alpha1_Ks3Bucket(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Ks3Bucket contains the access information required for interfacing with an ks3 bucket",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"endpoint": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Endpoint is the hostname of the bucket endpoint",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"bucket": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Bucket is the name of the bucket",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"region": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Region is the region of the bucket",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"accessKeySecret": {
+						SchemaProps: spec.SchemaProps{
+							Description: "AccessKeySecret is the secret selector to the bucket's access key",
+							Ref:         ref("k8s.io/api/core/v1.SecretKeySelector"),
+						},
+					},
+					"secretKeySecret": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SecretKeySecret is the secret selector to the bucket's secret key",
+							Ref:         ref("k8s.io/api/core/v1.SecretKeySelector"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.SecretKeySelector"},
 	}
 }
 
