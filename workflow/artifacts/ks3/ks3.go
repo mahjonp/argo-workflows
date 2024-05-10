@@ -1,6 +1,7 @@
 package ks3
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"os"
@@ -88,24 +89,88 @@ func (ks3Driver *ArtifactDriver) Save(path string, outputArtifact *wfv1.Artifact
 		if err != nil {
 			return false, err
 		}
+		bucketName := outputArtifact.Ks3.Bucket
+		objectName := outputArtifact.Ks3.Key
 		file, err := os.Open(path)
 		if err != nil {
 			return false, err
 		}
-		bucketName := outputArtifact.Ks3.Bucket
-		objectName := outputArtifact.Ks3.Key
-		_, err = ks3cli.PutObject(&s3.PutObjectInput{
+		defer file.Close()
+
+		stat, err := file.Stat()
+		if err != nil {
+			return false, err
+		}
+		if stat.Size() <= 1024*1024*5 {
+			_, err = ks3cli.PutObject(&s3.PutObjectInput{
+				Bucket:      aws.String(bucketName),
+				Key:         aws.String(objectName),
+				ContentType: aws.String("application/octet-stream"),
+				Body:        file,
+			})
+			if err != nil {
+				return false, err
+			}
+			return true, nil
+		}
+		initRet, err := ks3cli.CreateMultipartUpload(&s3.CreateMultipartUploadInput{
 			Bucket:      &bucketName,
 			Key:         &objectName,
-			Body:        file,
 			ContentType: aws.String("application/octet-stream"),
 		})
 		if err != nil {
 			return false, err
 		}
+		uploadId := *initRet.UploadID
+		log.Infof("uploadId: %s", uploadId)
+
+		var i int64 = 1
+		compParts := []*s3.CompletedPart{}
+		partsNum := []int64{0}
+		buffer := make([]byte, 5*1024*1024)
+		for {
+			n, err := file.Read(buffer)
+			if err != nil && err != io.EOF {
+				return false, err
+			} else if n == 0 {
+				break
+			} else {
+				resp, err := ks3cli.UploadPart(&s3.UploadPartInput{
+					Bucket:        &bucketName,
+					Key:           &objectName,
+					PartNumber:    aws.Long(i),
+					UploadID:      aws.String(uploadId),
+					Body:          bytes.NewReader(buffer[:n]),
+					ContentLength: aws.Long(int64(len(buffer[:n]))),
+				})
+				if err != nil {
+					return false, err
+				}
+				partsNum = append(partsNum, i)
+				compParts = append(compParts, &s3.CompletedPart{PartNumber: &partsNum[i], ETag: resp.ETag})
+				log.Infof("upload part %d, etag: %s", i, *resp.ETag)
+				i++
+			}
+		}
+
+		compRet, err := ks3cli.CompleteMultipartUpload(&s3.CompleteMultipartUploadInput{
+			Bucket:   aws.String(bucketName),
+			Key:      aws.String(objectName),
+			UploadID: aws.String(uploadId),
+			MultipartUpload: &s3.CompletedMultipartUpload{
+				Parts: compParts,
+			},
+		})
+		if err != nil {
+			return false, err
+		}
+		log.Infof("upload complete: %v", *compRet)
 		return true, nil
 	})
-	return err
+	if err != nil {
+		return fmt.Errorf("upload to ks3 failed: %w", err)
+	}
+	return nil
 }
 
 func (ks3Driver *ArtifactDriver) Delete(artifact *wfv1.Artifact) error {
