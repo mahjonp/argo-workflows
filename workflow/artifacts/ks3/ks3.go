@@ -124,10 +124,25 @@ func (ks3Driver *ArtifactDriver) Save(path string, outputArtifact *wfv1.Artifact
 		uploadId := *initRet.UploadID
 		log.Infof("uploadId: %s", uploadId)
 
+		defer func() {
+			if err != nil {
+				log.Infof("abort upload: %s", uploadId)
+				_, abortErr := ks3cli.AbortMultipartUpload(&s3.AbortMultipartUploadInput{
+					Bucket:      &bucketName,
+					Key:         &objectName,
+					ContentType: aws.String("application/octet-stream"),
+					UploadID:    &uploadId,
+				})
+				if abortErr != nil {
+					log.Errorf("abort upload failed: %v", abortErr)
+				}
+			}
+		}()
+
 		var i int64 = 1
 		compParts := []*s3.CompletedPart{}
 		partsNum := []int64{0}
-		buffer := make([]byte, 5*1024*1024)
+		buffer := make([]byte, 500*1024*1024)
 		for {
 			n, err := file.Read(buffer)
 			if err != nil && err != io.EOF {
